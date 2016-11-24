@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>CV - {{ param.name.value }}</title>
+    <meta name="description" content="Picard Html vCard">
+    <meta name="keywords" content="business, personal, portfolio">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Stylesheets -->
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        {% stylesheets filter='cssrewrite' output='css/compiled/main.css'
+            'css/bootstrap.min.css'
+            'css/bootstrap-theme.min.css'
+            'css/font-awesome/css/font-awesome.min.css'
+
+            'bundles/app/css/color.css'
+            'bundles/app/css/magnific-popup.css'
+            'bundles/app/css/perfect-scrollbar.css'
+            'bundles/app/css/reset.css'
+            'bundles/app/css/style.css'
+        %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+        <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet' type='text/css'>
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    {% endblock %}
+</head>
+
+<body>
+    <div class="parallax"> </div>
+    <div id="wrapper">
+    <div class="container">
+        <div class="row">
+
+
+            {% include 'AppBundle:Default:left-section.html.twig' %}
+
+            <!--Right Section-->
+            <div id="tab-container" class="col-md-9">
+                <!--Top Menu -->
+                {% include 'AppBundle:Default:menu.html.twig' %}
+
+                {% include 'AppBundle::page-about.html.twig' %}
+
+                {% include 'AppBundle::page-experiences-pro.html.twig' %}
+
+                {% include 'AppBundle::page-educations.html.twig' %}
+
+                {% include 'AppBundle::page-projets.html.twig' %}
+
+                {% include 'AppBundle::page-contact.html.twig' %}
+
+            </div> <!-- #tab-container .col-md-9 end -->
+        </div> <!-- .row end-->
+    </div><!-- .container end -->
+</div> <!-- #wrapper end-->
+
+<!-- Javascripts -->
+    {% javascripts output='js/compiled/main.js'
+        'js/jquery-2.2.4.min.js'
+        'js/bootstrap.min.js'
+
+        '@AppBundle/Resources/public/js/isotope.pkgd.min.js'
+        '@AppBundle/Resources/public/js/jquery.easytabs.min.js'
+        '@AppBundle/Resources/public/js/jquery.magnific-popup.min.js'
+        '@AppBundle/Resources/public/js/jquery.mousewheel.js'
+        '@AppBundle/Resources/public/js/main.js'
+        '@AppBundle/Resources/public/js/onload.js'
+        '@AppBundle/Resources/public/js/perfect-scrollbar.js'
+    %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    {% block javascripts %}
+        <script type="application/javascript">
+            function ajaxSubmit() {
+                $('form').on('submit', function (e) {
+                    e.preventDefault();
+                    $('#loadingAjax').show();
+                    var $this = $(this);
+                    $.ajax({
+                        url: "{{ path('contact') }}",
+                        type: 'POST',
+                        data: $this.serialize(),
+                        success: function () {
+                            ajaxSuccess();
+                        }
+                    });
+                });
+            }
+            ajaxSubmit();
+
+            function ajaxSuccess() {
+                $('#successContact').show();
+                $('#loadingAjax').hide();
+            }
+        </script>
+    {% endblock %}
+
+</body>
+</html>

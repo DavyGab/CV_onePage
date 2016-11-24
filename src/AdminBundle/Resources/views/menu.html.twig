@@ -1,0 +1,10 @@
+<div class="sidebar content-box" style="display: block;">
+    <ul class="nav">
+        <!-- Main menu -->
+        <li{% if app.request.get('_route') == 'admin_home' %} class="current" {% endif %}><a href="{{ path('admin_home') }}"><i class="fa fa-home"></i> Dashboard</a></li>
+        <li{% if app.request.get('_route') == 'admin_config' %} class="current" {% endif %}><a href="{{ path('admin_config') }}"><i class="fa fa-calendar"></i> Config</a></li>
+        <li{% if app.request.get('_route') == 'admin_experience_pro' %} class="current" {% endif %}><a href="{{ path('admin_experience_pro') }}"><i class="fa fa-briefcase"></i> Travail</a></li>
+        <li{% if app.request.get('_route') == 'admin_education' %} class="current" {% endif %}><a href="{{ path('admin_education') }}"><i class="fa fa-graduation-cap"></i> Education</a></li>
+        <li{% if app.request.get('_route') == 'admin_projet' %} class="current" {% endif %}><a href="{{ path('admin_projet') }}"><i class="fa fa-graduation-cap"></i> Projets</a></li>
+    </ul>
+</div>

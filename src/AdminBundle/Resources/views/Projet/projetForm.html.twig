@@ -1,0 +1,68 @@
+<li class="experience col-md-12" data-id="{{ form.idTemp.vars.value }}">
+    {{ form_start(form, {'attr' : {'class': ''}}) }}
+    <div class="content-box-medium">
+        <div class="panel-heading">
+            <div class="panel-title panel-check"><i class="fa fa-2x {% if loop is defined %}fa-check cgreen{% else %}fa-times cred{% endif %}" aria-hidden="true"></i></div>
+            <div class="panel-title">Projet{% if loop is defined %} {{ loop.index }} {% else %} ++ {% endif %}</div>
+            <div class="panel-title panel-subtitle">{{ form.subTitle.vars.value }}</div>
+            <div class="panel-options col-md-6">
+                <div class="form-group">
+                    {{ form_widget(form.category, {'attr' : {'class': 'form-control'}}) }}
+                </div>
+            </div>
+        </div>
+        <div class="panel-body dispNone" id="panel-body">
+            <div class="col-md-6">
+                <div class="form-group">
+                    {{ form_label(form.subTitle, 'Titre', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                    {{ form_widget(form.subTitle, {'attr' : {'class': 'form-control', 'placeholder': 'Google'  }}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.title, 'Sous titre', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                    {{ form_widget(form.title, {'attr' : {'class': 'form-control', 'placeholder': 'Fondateur' }}) }}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form_label(form.startDate, 'Début', {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+                    {{ form_widget(form.startDate, {'attr' : {'class': 'form-control', 'placeholder': 'Juillet 2011'  }}) }}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form_label(form.endDate, 'Fin', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                    {{ form_widget(form.endDate, {'attr' : {'class': 'form-control', 'placeholder': 'Décembre 2016'  }}) }}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    {{ form_label(form.localisation, 'Lieu', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                    {{ form_widget(form.localisation, {'attr' : {'class': 'form-control', 'placeholder': 'Paris'  }}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.subCategory, 'Catégorie', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                    {{ form_widget(form.subCategory, {'attr' : {'class': 'form-control', 'placeholder': 'Stage de find\'étude' }}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.url, 'URL', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                    {{ form_widget(form.url, {'attr' : {'class': 'form-control', 'placeholder': 'http://www.shareyourstartup.com' }}) }}
+                </div>
+            </div>
+            <div class="col-md-12">
+                {{ form_label(form.description, 'Description', {'label_attr': {'class': 'col-sm-3 lineH30 control-label'}}) }}
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    {{ form_widget(form.description, {'attr' : {'class': 'form-control ckeditor', 'rows': '15'}}) }}
+                </div>
+            </div>
+            <div class="col-md-offset-5 col-md-2 text-center">
+                <div class="form-group">
+                    {{ form_label(form.status, 'Status', {'label_attr': {'class': 'margR10 control-label'}}) }}
+                    {{ form_widget(form.status, {'attr' : {'class': 'status-exp form-control'}}) }}
+                </div>
+            </div>
+            <div class="col-md-2 col-md-offset-7">
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+            </div>
+        </div>
+        {{ form_widget(form.idTemp, {'attr' : {'class': 'idTemp-input'}}) }}
+    </div>
+    {{ form_end(form) }}
+</li>

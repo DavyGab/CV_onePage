@@ -1,0 +1,143 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{%  block body %}
+    <div id="ajaxSuccess">
+        Projet sauvegardée !
+    </div>
+    <ol id="experiences">
+        {% for form in forms %}
+            {% include 'AdminBundle:Projet:projetForm.html.twig' %}
+        {% endfor %}
+    </ol>
+    <div class="col-md-12 text-center dispNone" id="waitAdd" style="margin: 15px 0;">
+        <i class="fa fa-refresh fa-4x fa-spin" aria-hidden="true"></i>
+    </div>
+    <div class="text-center">
+        <button id="addExperience" class="btn btn-primary" style="margin: 40px 0;">Ajouter une expérience</button>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        function toggleExperience() {
+            var $panel_title = $('.panel-title');
+            $panel_title.off();
+            $panel_title.click(function () {
+                $(this).parent().next(".panel-body").slideToggle();
+            });
+        }
+
+        function updateTitle() {
+            $('input').off();
+            $('input[id$="_subTitle"]').keyup(function() {
+                var titre = $(this).val();
+                $(this).closest('form').find('.panel-subtitle').html(titre);
+            });
+        }
+
+        function updateCheck(form) {
+            if (typeof form != 'undefined' && form.find('.panel-check > i').hasClass('fa-times')) {
+                form.find('.panel-check > i').removeClass('fa-times cred').addClass('fa-check cgreen');
+                enableSortExperiences();
+            }
+            $('input').keyup(function () {
+                if ($(this).closest('form').find('.panel-check > i').hasClass('fa-check')) {
+                    $(this).closest('form').find('.panel-check > i').removeClass('fa-check cgreen').addClass('fa-times cred');
+                    disableSortExperiences();
+                }
+            });
+        }
+
+        function addExperience() {
+            $('#addExperience').click(function() {
+                $('#waitAdd').show();
+                $.ajax({
+                    url: "{{ path('admin_experience_add', {'type' : 3}) }}",
+                    type: 'GET',
+                    success: function(response) {
+                        $('#waitAdd').hide();
+                        $('#experiences').append(response);
+
+                        ajaxSubmit();
+                        toggleExperience();
+                        updateTitle();
+                        updateCheck();
+
+                        $('.status-exp').bootstrapSwitch();
+
+                        CKEDITOR.replace($('#experiences').find('form:last').find('.ckeditor:first')[0]);
+                        disableSortExperiences();
+                    }
+                });
+            })
+        }
+
+        function ajaxSubmit() {
+            var $form = $( "form" );
+            $form.off();
+            $form.on('submit', function (e) {
+                e.preventDefault();
+                var $this = $(this);
+                var url = "{{ path('admin_experience_edit', {'id': 'id_var'}) }}";
+                var id_val = $this.find( ".idTemp-input:first" ).val();
+                url = url.replace('id_var', id_val);
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: $this.serialize(),
+                    success: function (id) {
+                        ajaxSuccess();
+                        updateCheck($this);
+                        if (id_val == -1) {
+                            $this.find(".idTemp-input:first").val(id);
+                        }
+                    }
+                });
+            });
+        }
+
+        function ajaxSuccess() {
+            var divParamSaved = $('#ajaxSuccess');
+            divParamSaved.fadeIn("slow");
+            setTimeout(function () {
+                divParamSaved.fadeOut("slow");
+            }, 5000);
+        }
+
+
+        var sortable_selector = $("ol#experiences");
+        function sortExperiences() {
+            sortable_selector.sortable({
+                delay: 400,
+                update: function (event, ui) {
+                    var data = sortable_selector.sortable( "toArray", { attribute: "data-id" } );
+                    $.ajax({
+                        url: "{{ path('admin_experience_order', {'type' : 3}) }}",
+                        type: 'POST',
+                        data: { orderArray : data },
+                        success: function () {
+                        }
+                    });
+                }
+            });
+            sortable_selector.disableSelection();
+        }
+        function refreshSortExperiences() {
+            sortable_selector.sortable("refresh");
+        }
+        function disableSortExperiences() {
+            sortable_selector.sortable("disable");
+        }
+        function enableSortExperiences() {
+            sortable_selector.sortable("enable");
+        }
+
+        ajaxSubmit();
+        addExperience();
+        $('.status-exp').bootstrapSwitch();
+        toggleExperience();
+        updateTitle()
+        updateCheck();
+        sortExperiences();
+    </script>
+{% endblock %}

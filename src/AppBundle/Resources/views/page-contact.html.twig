@@ -1,0 +1,25 @@
+<div id="contact" class="content col-md-12">
+    <div class="row">
+        <div class="section first-section">
+            <div class="page-title">
+                <h2>Me contacter</h2>
+            </div>
+        </div>
+        <div class="section paddT30">
+            <div id="loadingAjax" style=""><i class="fa fa-2x fa-spinner fa-spin"></i></div>
+            <div class="col-md-12 margB30">
+                <div id="successContact" class="margB20 text-center">
+                    J'ai bien reçu votre message, je vous recontacte dès que possible.
+                </div>
+                <!-- Contact Form -->
+                {{ form_start(contactForm, {'attr' : {'class': 'col-md-6 contact-form col-md-offset-3'}}) }}
+                    {{ form_widget(contactForm.name, {'attr' : {'class': 'form-inp requie', 'placeholder': 'Nom'}}) }}
+                    {{ form_widget(contactForm.email, {'attr' : {'class': 'form-inp requie', 'placeholder': 'Email'}}) }}
+                    {{ form_widget(contactForm.subject, {'attr' : {'class': 'form-inp requie', 'placeholder': 'Object'}}) }}
+                    {{ form_widget(contactForm.message, {'attr' : {'class': 'form-inp requie', 'placeholder': 'Votre message', 'rows': '10', 'style': 'height:20em'}}) }}
+                    <input id="con_submit" class="but-big col-sm-6 col-sm-offset-3" type="submit" value="Envoyer">
+                {{ form_end(contactForm) }}
+            </div>
+        </div>
+    </div>
+</div>

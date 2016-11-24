@@ -1,0 +1,41 @@
+# AdminBundle est préfixé par : /admin
+admin_home:
+    path:     /
+    defaults: { _controller: AdminBundle:Default:index }
+
+admin_config:
+    path:     /config
+    defaults: { _controller: AdminBundle:Config:index }
+
+admin_config_edit:
+    path:     /config/edit/{id}
+    defaults: { _controller: AdminBundle:Config:edit }
+
+# Toute experience
+admin_experience_edit:
+    path:     /experience/edit/{id}
+    defaults: { _controller: AdminBundle:Experience:editExperience }
+
+admin_experience_add:
+    path:     /experience/add/{type}
+    defaults: { _controller: AdminBundle:Experience:addExperience }
+
+admin_experience_order:
+    path:     /experience/order/{type}
+    defaults: { _controller: AdminBundle:Experience:orderExperience }
+
+# Experience
+admin_experience_pro:
+    path:     /experience
+    defaults: { _controller: AdminBundle:Experience:indexExperience }
+
+# Education
+admin_education:
+    path:     /education
+    defaults: { _controller: AdminBundle:Experience:indexExperience }
+
+# Projet
+admin_projet:
+    path:     /projet
+    defaults: { _controller: AdminBundle:Experience:indexExperience }
+

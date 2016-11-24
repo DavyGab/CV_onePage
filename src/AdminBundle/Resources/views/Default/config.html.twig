@@ -1,0 +1,61 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{%  block body %}
+<div id="ajaxSuccess">
+    Paramètre sauvegardé !
+</div>
+    <div class="col-md-12">
+        <div class="content-box-large">
+            <div class="panel-heading">
+                <div class="panel-title">Liste des paramètres</div>
+            </div>
+            <div class="panel-body">
+                {% for form in forms %}
+                    {{ form_start(form, {'attr' : {'class': 'form-horizontal'}}) }}
+                        <div class="form-group">
+                            <label for="{{ form.value.vars.id }}" class="col-sm-2 control-label">{{ form.type.vars.value }}</label>
+                            <div class="col-sm-8">
+                                {{ form_widget(form.value, {'attr' : {'class': 'form-control'}}) }}
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="submit" class="typeparam btn btn-primary">Enregistrer</button>
+                            </div>
+                        </div>
+                    {{ form_end(form) }}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        function ajaxSuccess() {
+            var divParamSaved = $('#ajaxSuccess');
+            divParamSaved.fadeIn("slow");
+            setTimeout(function() {
+                divParamSaved.fadeOut("slow");
+            }, 1500);
+        }
+
+        function ajaxSubmit() {
+            $('form').on('submit', function (e) {
+                e.preventDefault();
+                var $this = $(this);
+                var id = $this.attr('name').match(/resumebundle_param_(.*)/);
+                var url = "{{ path('admin_config_edit', {'id': 'id_var'}) }}";
+                url = url.replace('id_var', id[1]);
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: $this.serialize(),
+                    success: function () {
+                        ajaxSuccess();
+                    }
+                });
+            });
+        }
+
+        ajaxSubmit();
+    </script>
+{% endblock %}

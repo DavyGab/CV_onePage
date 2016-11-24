@@ -1,0 +1,112 @@
+<div class="profile col-md-3 wow fadeInDown">
+    <div class="profile-image paddB0 section">
+        <img alt="image" src="{{ asset('images/Profile-img.png') }}">
+    </div>
+    <div class="profile-info section paddB10">
+        <div class="name-job">
+            <h1>{{ param.name.value }}</h1>
+            <span class="job">{{ param.job.value }}</span>
+        </div><!-- .name-job -->
+        <div class="social-icons">
+            <a class="linkedin" href="{{ param.linkedin.value }}"><i class="fa fa-linkedin"></i> </a>
+            <a class="github" href="{{ param.github.value }}"><i class="fa fa-github"></i> </a>
+        </div>
+    </div>
+
+    <div class="col-md-12 section ptext-left">
+        <div class="col-md-12 my-skills">
+            <ul class="skill-list">
+                {% if param.skill_1.value is not null %}
+                <li>
+                    <div class="skills">
+                        {% for i in 1..3 %}
+                            {% if i <= param.skill_1_level.value %}
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            {% else %}
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <h3 class="skills_title">{{ param.skill_1.value }}</h3>
+                </li>
+                {% endif %}
+
+                {% if param.skill_2.value is not null %}
+                <li>
+                    <div class="skills">
+                        {% for i in 1..param.skill_2_level.value %}
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        {% endfor %}
+                        {% for i in param.skill_2_level.value..3 %}
+                            {% if i != 3 %}
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <h3 class="skills_title">{{ param.skill_2.value }}</h3>
+                </li>
+                {% endif %}
+                {% if param.skill_3.value is not null %}
+                <li>
+                    <div class="skills">
+                        {% for i in 1..param.skill_3_level.value %}
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        {% endfor %}
+                        {% for i in param.skill_3_level.value..3 %}
+                            {% if i != 3 %}
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <h3 class="skills_title">{{ param.skill_3.value }}</h3>
+                </li>
+                {% endif %}
+                {% if param.skill_4.value is not null %}
+                <li>
+                    <div class="skills">
+                        {% for i in 1..param.skill_4_level.value %}
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        {% endfor %}
+                        {% for i in param.skill_4_level.value..3 %}
+                            {% if i != 3 %}
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <h3 class="skills_title">{{ param.skill_4.value }}</h3>
+                </li>
+                {% endif %}
+                {% if param.skill_5.value is not null %}
+                <li>
+                    <div class="skills">
+                        {% for i in 1..param.skill_5_level.value %}
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        {% endfor %}
+                        {% for i in param.skill_5_level.value..3 %}
+                            {% if i != 3 %}
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <h3 class="skills_title">{{ param.skill_5.value }}</h3>
+                </li>
+                {% endif %}
+                {% if param.skill_6.value is not null %}
+                <li>
+                    <div class="skills">
+                        {% for i in 1..param.skill_6_level.value %}
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        {% endfor %}
+                        {% for i in param.skill_6_level.value..3 %}
+                            {% if i != 3 %}
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <h3 class="skills_title">{{ param.skill_6.value }}</h3>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
