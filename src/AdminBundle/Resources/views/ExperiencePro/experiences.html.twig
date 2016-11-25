@@ -107,7 +107,7 @@
 
         var sortable_selector = $("ol#experiences");
         function sortExperiences() {
-            /*sortable_selector.sortable({
+            sortable_selector.sortable({
                 delay: 400,
                 update: function (event, ui) {
                     var data = sortable_selector.sortable( "toArray", { attribute: "data-id" } );
@@ -120,16 +120,16 @@
                     });
                 }
             });
-            sortable_selector.disableSelection();*/
+            sortable_selector.disableSelection();
         }
         function refreshSortExperiences() {
-            //sortable_selector.sortable("refresh");
+            sortable_selector.sortable("refresh");
         }
         function disableSortExperiences() {
-            //sortable_selector.sortable("disable");
+            sortable_selector.sortable("disable");
         }
         function enableSortExperiences() {
-            //sortable_selector.sortable("enable");
+            sortable_selector.sortable("enable");
         }
 
         ajaxSubmit();

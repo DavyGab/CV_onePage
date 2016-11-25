@@ -748,12 +748,7 @@ body {
 .paddT30 { padding-top: 30px !important; }
 
 
-/* --------------------------- DRANG AND DROP ---------------------------- */
-#experiences li span {
-    position: absolute;
-    margin-left: -1.3em;
-    height: 70px
-}
+/* ------------------- DRANG AND DROP SORTABLE ------------------ */
 .ui-sortable-placeholder {
     height: 62px
 }
