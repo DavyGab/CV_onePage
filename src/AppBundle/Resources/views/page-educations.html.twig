@@ -15,7 +15,9 @@
                                 <div class="timeline-box timeline-box-{% if loop.index % 2 == 0 %}left{% else %}right{% endif %}">
                                     <span class="dot"></span>
                                     <div class="timeline-box-inner animate-right">
-                                        <div class="ribbon ribbon-{% if loop.index % 2 == 0 %}right{% else %}left{% endif %}"><span>{{ experience.subCategory }}</span></div>
+                                        {% if experience.subCategory is not null %}
+                                            <div class="ribbon ribbon-{% if loop.index % 2 == 0 %}right{% else %}left{% endif %}"><span>{{ experience.subCategory }}</span></div>
+                                        {% endif %}
                                         <span class="arrow"></span>
                                         <div class="date">{{ experience.startDate }} - {{ experience.endDate }}</div>
                                         <h3>{{ experience.title }}</h3>
