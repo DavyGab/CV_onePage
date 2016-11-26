@@ -106,17 +106,24 @@
 
 
         var sortable_selector = $("ol#experiences");
+        var timeoutIdSortArray = [];
         function sortExperiences() {
             sortable_selector.sortable({
                 delay: 400,
                 update: function (event, ui) {
                     var data = sortable_selector.sortable( "toArray", { attribute: "data-id" } );
-                    $.ajax({
-                        url: "{{ path('admin_experience_order', {'type' : 2}) }}",
-                        type: 'POST',
-                        data: { orderArray : data },
-                        success: function () {
-                        }
+                    var timeoutId = setTimeout( function() {
+                        $.ajax({
+                            url: "{{ path('admin_experience_order', {'type' : 1}) }}",
+                            type: 'POST',
+                            data: { orderArray : data }
+                        })
+                    }, 5000);
+                    timeoutIdSortArray.push(timeoutId);
+                },
+                activate: function  (event, ui) {
+                    timeoutIdSortArray.forEach(function(timeoutIdSort) {
+                        clearTimeout(timeoutIdSort);
                     });
                 }
             });
