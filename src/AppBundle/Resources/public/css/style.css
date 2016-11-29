@@ -381,6 +381,7 @@ p{
 
 ul.top-menu{
 	width: 100%;
+    text-align: center;
 	background:#fff;	
 	display: inline-block;
 	-webkit-box-shadow: -2px -1px 88px 0px rgba(0,0,0,0.17);
@@ -1119,7 +1120,7 @@ ul.top-menu{
 	
 
     ul.top-menu li a {
-        padding:30px 20px;
+        padding:30px 15px;
     }
 
 }
@@ -1139,16 +1140,38 @@ ul.top-menu{
 	.contact-info{
 		margin-top: 30px;
 	}
-	
-	
+    
+    #tab-container {
+        margin-top: 375px;
+    }
+
+    .timeline-box-inner .arrow, .timeline-box-left .dot, .timeline-box-right .dot, .timeline .timeline-bar {
+        display: none !important;
+    }
+
+    .timeline-box-left, .timeline-box-right {
+        width: 100% !important;
+        position: relative !important;
+        top: 0 !important;
+        right: 0 !important;
+        left: 0 !important;
+    }
+
+    .margmdB {
+        padding-bottom: 40px;
+    }
+
+    .timeline-box-right .timeline-box-inner, .timeline-box-left .timeline-box-inner {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+    }
 }
 
-@media screen and (max-width: 1200px) {
-    ul.top-menu li{
-		font-size: 0.7em;
-	}
+@media screen and (max-width: 479px) {
+    .profile {
+        margin-top: 85px;
+    }
 }
-
 /*Max Width 767px */
 
 @media screen and (max-width: 767px) {

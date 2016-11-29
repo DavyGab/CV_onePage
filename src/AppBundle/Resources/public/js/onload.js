@@ -10,6 +10,10 @@ $(document).ready( function() {
         transitionOutEasing: 'linear'
     });
 
+    $('.contact-footer').click(function() {
+        $("#contact-menu").click();
+    });
+
     //PAGE SMOOTH SCROLL
     $(function() {
 
