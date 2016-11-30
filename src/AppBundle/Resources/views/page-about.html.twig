@@ -16,7 +16,9 @@
                         <li><i class="fa fa-trophy"></i> <span class="margL10">{{ param.hobbies.value }}</span> </li>
                     </ul>
                 </div>
-                <a href="{{ param.cv_url.value }}" style="text-align: center" target="_blank" class="but-big col-sm-4 col-sm-offset-4 margT10">Télécharger mon CV</a>
+                {% if param.cv_url.value is not null %}
+                    <a href="{{ param.cv_url.value }}" style="text-align: center" target="_blank" class="but-big col-sm-4 col-sm-offset-4 margT10">Télécharger mon CV</a>
+                {% endif %}
             </div>
         </div>
 
@@ -24,58 +26,10 @@
             <div class="col-md-12 ptext">
                 <div class="col-md-12 about-text">
                     <h2 class="section-title">{{ param.subtitle.value }}</h2>
-                    <p>{{ param.description.value }}</p>
+                    <p>{{ param.description.value|raw }}</p>
                 </div>
             </div>
         </div>
-        {#
-        <div class="col-md-12 pwedo section">
-            <div class="col-md-12 col-sm-12 col-xs-12 services">
-                <div class="service col-md-4 col-sm-6">
-                    <i class="fa fa-apple"></i>
-                    <div class="features">
-                        <b>Applications</b>
-                        <p>Duis vitae odio gravida</p>
-                    </div>
-                </div>
-                <div class="service col-md-4 col-sm-6">
-                    <i class="fa fa-desktop"></i>
-                    <div class="features">
-                        <b>Web Design</b>
-                        <p>Mauris eleifend dapibus</p>
-                    </div>
-                </div>
-                <div class="service col-md-4 col-sm-6">
-                    <i class="fa fa-picture-o"></i>
-                    <div class="features">
-                        <b>Illustrations</b>
-                        <p>Posuere ac sem nec</p>
-                    </div>
-                </div>
-                <div class="service col-md-4 col-sm-6">
-                    <i class="fa fa-code"></i>
-                    <div class="features">
-                        <b>Development</b>
-                        <p>Curabitur euismod sapien</p>
-                    </div>
-                </div>
-                <div class="service col-md-4 col-sm-6">
-                    <i class="fa fa-search"></i>
-                    <div class="features">
-                        <b>Seo Optimization</b>
-                        <p>Etiam vitae condimentum</p>
-                    </div>
-                </div>
-                <div class="service col-md-4 col-sm-6">
-                    <i class="fa fa-support"></i>
-                    <div class="features">
-                        <b>Speed Support</b>
-                        <p>Praesent nisl turpis</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        #}
         {% include 'AppBundle:Default:footer.html.twig' %}
     </div>
 </div>
