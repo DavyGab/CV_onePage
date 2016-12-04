@@ -114,7 +114,7 @@
                     var data = sortable_selector.sortable( "toArray", { attribute: "data-id" } );
                     var timeoutId = setTimeout( function() {
                         $.ajax({
-                            url: "{{ path('admin_experience_order', {'type' : 1}) }}",
+                            url: "{{ path('admin_experience_order', {'type' : type}) }}",
                             type: 'POST',
                             data: { orderArray : data }
                         })

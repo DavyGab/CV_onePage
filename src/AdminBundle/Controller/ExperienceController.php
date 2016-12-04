@@ -49,7 +49,8 @@ class ExperienceController extends Controller
 
         return $this->render($template,
             array(
-                'forms' => $forms
+                'forms' => $forms,
+                'type' => $category
             )
         );
     }
