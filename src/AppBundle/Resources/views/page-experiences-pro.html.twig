@@ -16,13 +16,17 @@
                                     <span class="dot"></span>
                                     <div class="timeline-box-inner animate-right">
                                         {% if experience.subCategory is not null %}
-                                            <div class="ribbon ribbon-{% if loop.index % 2 == 1 %}right{% else %}left{% endif %}"><span>{{ experience.subCategory }}</span></div>
+                                            <div class="ribbon ribbon-{% if loop.index % 2 == 1 %}left{% else %}right{% endif %}"><span>{{ experience.subCategory }}</span></div>
                                         {% endif %}
                                         <span class="arrow"></span>
                                         <div class="date">{{ experience.startDate }} - {{ experience.endDate }}</div>
-                                        <h3>{{ experience.title }}</h3>
-                                        <h4>{{ experience.subTitle }}</h4>
-                                        <p>{{ experience.description|raw }}</p>
+                                        <div class="row">
+                                            <div class="col-xs-8 col-xs-offset-2">
+                                                <h3>{{ experience.title }}</h3>
+                                                <h4>{{ experience.subTitle }}</h4>
+                                            </div>
+                                        </div>
+                                        <p class="text-justify">{{ experience.description|raw }}</p>
                                     </div>
                                 </div>
                             {% endfor %}
