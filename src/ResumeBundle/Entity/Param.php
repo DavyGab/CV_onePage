@@ -31,7 +31,7 @@ class Param
     /**
      * @var string
      *
-     * @ORM\Column(name="value", type="text", nullable="true")
+     * @ORM\Column(name="value", type="text", nullable=true)
      */
     private $value;
 
