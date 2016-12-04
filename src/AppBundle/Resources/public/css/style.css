@@ -427,7 +427,7 @@ ul.top-menu li:last-child{
 
 ul.top-menu li a{
 	color:#000;
-	padding:30px;	
+	padding:30px 28px;
 	display: inline-block;	
 	display: block;
 }
@@ -1131,7 +1131,7 @@ ul.top-menu{
 	
 
     ul.top-menu li a {
-        padding:30px 15px;
+        padding:30px 11px;
     }
 
 }
