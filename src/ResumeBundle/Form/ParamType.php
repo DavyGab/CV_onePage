@@ -2,6 +2,7 @@
 
 namespace ResumeBundle\Form;
 
+use Symfony\Component\DomCrawler\Field\TextareaFormField;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,7 +18,7 @@ class ParamType extends AbstractType
     {
         $builder
             ->add('type', 'hidden')
-            ->add('value')
+            ->add('value', TextareaFormField::class, array('required' => false))
         ;
     }
     
