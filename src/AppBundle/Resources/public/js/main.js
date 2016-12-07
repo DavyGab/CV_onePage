@@ -26,20 +26,51 @@ $('.responsive-menu').click(function(){
 
 function l() {
     $(window).width() > 600 ? $(".timeline").each(function() {
-        for (var t = 25, i = 0, n = 70, o = 0, s = 0, a = 0, r = 0, l = $(this).find(".timeline-bar"), d = $(this).find(".timeline-inner"), c = $(this).find(".timeline-box-left"), u = $(this).find(".timeline-box-right"), h = 0; h < c.length; h++) $(c[h]).css({
-            position: "absolute",
-            left: "0",
-            top: i + "px"
-        }), i = i + $(c[h]).height() + t, o = $(c[h]).height();
-        for (var h = 0; h < u.length; h++) $(u[h]).css({
-            position: "absolute",
-            right: "0",
-            top: n + "px"
-        }), n = n + $(u[h]).height() + t, s = $(u[h]).height();
-        i > n ? (a = i - t, r = a - o) : (a = n - t, r = a - s), d.height(a), l.css({
+        for (var marginBetweenBox = 25,
+                 totalHeightBoxLeftMargin = 0,
+                 totalHeightBoxRightMargin = 70,
+                 totalHeightBoxLeft = 0,
+                 totalHeightBoxRight = 0,
+                 a = 0,
+                 r = 0,
+                 timelineBar = $(this).find(".timeline-bar"),
+                 timelineInner = $(this).find(".timeline-inner"),
+                 boxLeft = $(this).find(".timeline-box-left"),
+                 boxRight = $(this).find(".timeline-box-right"),
+                 boxLeftIndex = 0;
+             boxLeftIndex < boxLeft.length;
+             boxLeftIndex++) {
+            $(boxLeft[boxLeftIndex]).css({
+                position: "absolute",
+                left: "0",
+                top: totalHeightBoxLeftMargin + "px"
+            });
+            totalHeightBoxLeftMargin = totalHeightBoxLeftMargin + $(boxLeft[boxLeftIndex]).height() + marginBetweenBox;
+            totalHeightBoxLeft = $(boxLeft[boxLeftIndex]).height();
+        }
+
+        for (var boxRightIndex = 0; boxRightIndex < boxRight.length; boxRightIndex++) {
+            $(boxRight[boxRightIndex]).css({
+                position: "absolute",
+                right: "0",
+                top: totalHeightBoxRightMargin + "px"
+            });
+            totalHeightBoxRightMargin = totalHeightBoxRightMargin + $(boxRight[boxRightIndex]).height() + marginBetweenBox;
+            totalHeightBoxRight = $(boxRight[boxRightIndex]).height();
+        }
+        if (totalHeightBoxLeftMargin > totalHeightBoxRightMargin) {
+            a = totalHeightBoxLeftMargin - marginBetweenBox;
+            r = a - totalHeightBoxLeft
+        } else {
+            a = totalHeightBoxRightMargin - marginBetweenBox;
+            r = a - totalHeightBoxRight;
+        }
+        timelineInner.height(a);
+        timelineBar.css({
             top: "136px",
             height: r + "px"
-        })
+        });
+
 
     }) : ($(".timeline-bar").attr("style", ""), $(".timeline-box").attr("style", ""), $(".timeline-inner").attr("style", ""))
 }
