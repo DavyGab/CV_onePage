@@ -33,6 +33,7 @@ function l() {
                  totalHeightBoxRight = 0,
                  a = 0,
                  r = 0,
+                 b = 0,
                  timelineBar = $(this).find(".timeline-bar"),
                  timelineInner = $(this).find(".timeline-inner"),
                  boxLeft = $(this).find(".timeline-box-left"),
@@ -60,12 +61,17 @@ function l() {
         }
         if (totalHeightBoxLeftMargin > totalHeightBoxRightMargin) {
             a = totalHeightBoxLeftMargin - marginBetweenBox;
-            r = a - totalHeightBoxLeft
         } else {
             a = totalHeightBoxRightMargin - marginBetweenBox;
-            r = a - totalHeightBoxRight;
         }
         timelineInner.height(a);
+        if (boxLeft.length > boxRight.length) {
+            b = totalHeightBoxLeftMargin - marginBetweenBox;
+            r = b - totalHeightBoxLeft
+        } else {
+            b = totalHeightBoxRightMargin - marginBetweenBox;
+            r = b - totalHeightBoxRight;
+        }
         timelineBar.css({
             top: "136px",
             height: r + "px"
