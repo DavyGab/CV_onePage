@@ -30,7 +30,8 @@ $('.responsive-menu').click(function(){
 });
 
 function resizeLeftBar() {
-    $('#leftBar').width($('#mainRow').width()/4);
+    var leftBarWidth = $('#mainRow').width()/4;
+    $('#leftBar').width(leftBarWidth);
 }
 
 function l() {
