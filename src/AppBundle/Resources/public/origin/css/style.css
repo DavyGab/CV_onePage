@@ -1142,6 +1142,8 @@ ul.top-menu{
 
 	.profile{
 		margin-bottom: 30px;
+		top: 60px;
+    		position: fixed;
 	}
 	
 	.my-skills {
