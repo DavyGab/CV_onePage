@@ -32,7 +32,12 @@
         width: 1400px;
     }
 }
-
+@media screen and (min-width: 991px) {
+    .profile{
+	top: 60px;
+    	position: fixed;
+    }
+}
 html {
   position: relative;
   min-height: 100%;
@@ -1142,8 +1147,6 @@ ul.top-menu{
 
 	.profile{
 		margin-bottom: 30px;
-		top: 60px;
-    		position: fixed;
 	}
 	
 	.my-skills {
