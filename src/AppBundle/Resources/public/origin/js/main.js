@@ -3,6 +3,11 @@ $(function(){
     $('.widget-out').perfectScrollbar({
         wheelSpeed:50
     });
+    resizeLeftBar();
+});
+
+$( window ).resize(function() {
+    resizeLeftBar();
 });
 
 //SLIDE MENU
@@ -23,6 +28,10 @@ function k() {
 $('.responsive-menu').click(function(){
     $('.top-menu li').slideToggle();
 });
+
+function resizeLeftBar() {
+    $('#leftBar').width($('#mainRow').width()/4);
+}
 
 function l() {
     $(window).width() > 600 ? $(".timeline").each(function() {
