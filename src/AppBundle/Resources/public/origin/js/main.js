@@ -30,8 +30,16 @@ $('.responsive-menu').click(function(){
 });
 
 function resizeLeftBar() {
-    var leftBarWidth = $('#mainRow').width()/4;
-    $('#leftBar').width(leftBarWidth);
+    if ( $(window).width() > 992 && ($('#leftBar').height() + 60) < $(window).height()) {
+        var leftBarWidth = $('#mainRow').width()/4 - 30;
+        $('#leftBar').width(leftBarWidth);
+        $('#tab-container').addClass('col-md-offset-3');
+        $('#leftBar').addClass('fixLeftBar');
+    } else {
+        $('#tab-container').removeClass('col-md-offset-3');
+        $('#leftBar').removeClass('fixLeftBar');
+        $('#leftBar').width('');
+    }
 }
 
 function l() {
