@@ -6,7 +6,9 @@
     <meta name="description" content=">CV - {{ param.name.value }} - {{ param.job.value }}">
     <meta name="keywords" content=">CV - {{ param.name.value }} - {{ param.job.value }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    {% image '@AppBundle/Resources/public/images/favicon.ico'output='/images/favicon.ico' %}
+        <link rel="icon" href="{{ asset_url }}" />
+    {% endimage %}
     <!-- Stylesheets -->
     {% block stylesheets %}
         {% stylesheets filter='cssrewrite' output='css/compiled/main.css'
