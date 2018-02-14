@@ -52,7 +52,7 @@ class DefaultController extends Controller
             
             $message = \Swift_Message::newInstance()
                 ->setSubject('Message reçu du formulaire de contact : ' . $data['subject'])
-                //->setFrom()
+                ->setFrom('formulaire@davygabison.fr')
                 ->setTo('gab.davy@gmail.com')
                 ->setBody($body)
             ;
