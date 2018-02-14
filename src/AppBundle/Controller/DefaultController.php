@@ -48,11 +48,13 @@ class DefaultController extends Controller
         if ($form->handleRequest($request)->isValid()) {
             $data = $form->getData();
 
+            $body = "De : ".$data['name']. ' -- ' .$data['email']. "\n\nMessage :\n".  $data['message'];
+            
             $message = \Swift_Message::newInstance()
-                ->setSubject($data['subject'])
-                ->setFrom(array($data['email'] => $data['name']))
+                ->setSubject('Message reçu du formulaire de contact : ' . $data['subject'])
+                //->setFrom()
                 ->setTo('gab.davy@gmail.com')
-                ->setBody($data['message'])
+                ->setBody($body)
             ;
             $this->get('mailer')->send($message);
             
