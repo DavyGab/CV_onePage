@@ -1,7 +1,7 @@
 <div class="profile col-md-3 wow fadeInDown" id="leftBar">
     {% if param.profile_img_active.value is not null %}
         <div class="profile-image paddB0 section hidden-sm hidden-xs">
-            <img alt="image" src="{{ asset('images/' ~ param.profile_img_active.value ) }}">
+            <img alt="image" src="{{ asset('bundles/app/images/' ~ param.profile_img_active.value ) }}">
         </div>
     {% endif %}
     <div class="profile-info section paddB10">
