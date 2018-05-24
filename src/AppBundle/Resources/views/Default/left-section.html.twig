@@ -5,8 +5,15 @@
             <span class="job">{{ param.job.value }}</span>
         </div><!-- .name-job -->
         <div class="social-icons">
-            <a class="linkedin" href="{{ param.linkedin.value }}" target="_blank"><i class="fa fa-linkedin"></i> </a>
-            <a class="github" href="{{ param.github.value }}" target="_blank"><i class="fa fa-github"></i> </a>
+            {% if param.linkedin.value is not null %}
+                <a class="linkedin" href="{{ param.linkedin.value }}" target="_blank"><i class="fa fa-linkedin"></i> </a>
+            {% endif %}
+            {% if param.github.value is not null %}
+                <a class="github" href="{{ param.github.value }}" target="_blank"><i class="fa fa-github"></i> </a>
+            {% endif %}
+            {% if param.instagram.value is not null %}
+                <a class="github" href="{{ param.instagram.value }}" target="_blank"><i class="fa fa-instagram"></i> </a>
+            {% endif %}
         </div>
     </div>
     <div class="col-md-12 section ptext-left">
