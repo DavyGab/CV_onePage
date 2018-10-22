@@ -27,13 +27,16 @@ class DefaultController extends Controller
             ->add('message', 'textarea')
             ->getForm();
 
-        return $this->render('AppBundle:Default:index.html.twig', array(
+        $response = $this->render('AppBundle:Default:index.html.twig', array(
             'param' => $params,
             'experiences' => $experiences,
             'contactForm' => $form->createView()
             )
         );
+        $response->setSharedMaxAge(3600);
+        $response->headers->addCacheControlDirective('must-revalidate', true);
         
+        return $response;
     }
 
     public function ContactAction(Request $request) {
