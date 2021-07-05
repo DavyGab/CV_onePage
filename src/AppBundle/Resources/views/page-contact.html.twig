@@ -17,7 +17,7 @@
                     {{ form_widget(contactForm.email, {'attr' : {'class': 'form-inp requie', 'placeholder': 'Email'}}) }}
                     {{ form_widget(contactForm.subject, {'attr' : {'class': 'form-inp requie', 'placeholder': 'Object'}}) }}
                     {{ form_widget(contactForm.message, {'attr' : {'class': 'form-inp requie', 'placeholder': 'Votre message', 'rows': '10', 'style': 'height:20em'}}) }}
-                    <input id="con_submit" class="but-big col-sm-6 col-sm-offset-3" type="submit" value="Envoyer">
+                    <input id="con_submit" class="g-recaptcha but-big col-sm-6 col-sm-offset-3" type="submit" data-sitekey="6LdBhXkbAAAAAC7TKPu9i4LjSxlPtQ65BM8EqBe0" data-callback='onSubmit' data-action='submit' value="Envoyer">
                 {{ form_end(contactForm) }}
             </div>
         </div>
