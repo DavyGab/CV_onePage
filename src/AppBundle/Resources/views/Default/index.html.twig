@@ -71,6 +71,7 @@
 </div> <!-- #wrapper end-->
 
 <!-- Javascripts -->
+ <script src="https://www.google.com/recaptcha/api.js"></script>
     {% javascripts output='js/compiled/main.js'
         'js/jquery-2.2.4.min.js'
         'js/bootstrap.min.js'
@@ -88,7 +89,7 @@
 
     {% block javascripts %}
         <script type="application/javascript">
-            function ajaxSubmit() {
+            function onSubmit(token) {
                 $('form').on('submit', function (e) {
                     e.preventDefault();
                     $('#loadingAjax').show();
